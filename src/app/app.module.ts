@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DateFilterComponent } from './components/date-filter/date-filter.component';
 import { ResultNumbersComponent } from './components/result-numbers/result-numbers.component';
 import { ResultTableComponent } from './components/result-table/result-table.component';
+import { LottolandServiceService } from "./services/lottoland-service.service";
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -16,9 +18,10 @@ import { ResultTableComponent } from './components/result-table/result-table.com
     ResultTableComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LottolandServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
