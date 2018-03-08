@@ -1,3 +1,16 @@
-<p>
-  result-table works!
-</p>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>{{titles.tier}}</th>
+      <th>{{titles.match}}</th>
+      <th>{{titles.winners}}</th>
+      <th>{{titles.amount}}</th>
+    </tr>
+    <tr *ngFor="let row of dataToDraw; let i = index">
+      <td>{{romanNumbers[i+1]}}</td>
+      <td>{{matches[i+1].n}} Numbers + {{matches[i+1].e}} Euronumbers</td>
+      <td>{{row.winners}}x</td>
+      <td>€{{row.prize}}</td>
+    </tr>
+  </table>
+</div>
