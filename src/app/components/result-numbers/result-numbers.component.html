@@ -1,3 +1,15 @@
-<p>
-  result-numbers works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      EuroJackpot Results for Friday 02 Mar 2018
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div [hidden]="!numbers && !euroNumbers">
+        <span id="numbers">{{numbers[0]}} {{numbers[1]}} {{numbers[2]}} {{numbers[3]}} {{numbers[4]}}</span>
+        <span id="euroNumbers">{{euroNumbers[0]}} {{euroNumbers[1]}}</span>
+      </div>
+    </div>
+  </div>
+</div>
