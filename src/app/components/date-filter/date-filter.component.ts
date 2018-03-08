@@ -62,6 +62,21 @@ export class DateFilterComponent implements OnInit {
   }
 
   /**
+   * This method parse the data to draw filtering by the selected date
+   * (Also trimming the zeros from date)
+   * @param date - The date selected in the combo
+   * @param data - received data
+   */
+  public setDataToDrawByDate = (event) => {
+    let date = `${event.value}.${this.selectedYear}`;
+    const rowsToDraw = _.filter(this.receivedData, (d) => {return _.split(d.drawingDate, ',', 1)[0].replace(/\b0/g, '') === date});
+    this.lottolandService.setRowData(rowsToDraw);
+
+    console.log(date);
+    console.log(rowsToDraw);
+  }
+
+  /**
    * This method fills the year combo with the parsed values
    */
   public fillYearCombo = () => {

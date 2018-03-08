@@ -4,13 +4,13 @@
     <div class="col">
       <div class="row">
         <div class="col-sm">
-          <select [(ngModel)]="selectedDayMonth" class="form-control" id="days-select">
-            <option *ngFor="let dm of dayMonth" [selected]="dm.string" value="{{dm.yearMonth}}">{{dm.string}}</option>
+          <select [(ngModel)]="selectedDayMonth" (change)="setDataToDrawByDate($event.target)" class="form-control" id="days-select">
+            <option *ngFor="let dm of dayMonth" [selected]="dm.string" [value]="dm.dayMonth">{{dm.string}}</option>
           </select>
         </div>
         <div class="col-sm">
           <select [(ngModel)]="selectedYear" (change)="fillDayMonthCombo()" class="form-control" id="year-select">
-            <option *ngFor="let y of years" [selected]="y" value="{{y}}">{{y}}</option>
+            <option *ngFor="let y of years" [selected]="y" [value]="y">{{y}}</option>
           </select>
         </div>
       </div>
