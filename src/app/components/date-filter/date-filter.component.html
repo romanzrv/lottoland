@@ -1,3 +1,19 @@
-<p>
-  date-filter works!
-</p>
+<div class="container lottoland-header">
+  <div class="row">
+    <div class="col">{{title}}</div>
+    <div class="col">
+      <div class="row">
+        <div class="col-sm">
+          <select [(ngModel)]="selectedDayMonth" class="form-control" id="days-select">
+            <option *ngFor="let dm of dayMonth" [selected]="dm.string" value="{{dm.yearMonth}}">{{dm.string}}</option>
+          </select>
+        </div>
+        <div class="col-sm">
+          <select [(ngModel)]="selectedYear" (change)="fillDayMonthCombo()" class="form-control" id="year-select">
+            <option *ngFor="let y of years" [selected]="y" value="{{y}}">{{y}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
