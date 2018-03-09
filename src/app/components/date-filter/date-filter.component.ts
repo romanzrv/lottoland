@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { LottolandServiceService } from "../../services/lottoland-service.service";
+import { LottolandServiceService } from '../../services/lottoland-service.service';
 import * as _ from 'lodash';
 
 @Component({
@@ -45,8 +45,6 @@ export class DateFilterComponent implements OnInit {
    * @param year - Selected year
    */
   public getDayMonth = (data, year) => {
-    const yearMonths = {0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Abr', 4: 'May', 5: 'Jun', 6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec'};
-    const weekDays = {1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thu', 5: 'Fri', 6: 'Sat', 7: 'Sun'};
     let filteredDates: Array<string>;
     const dayMonth: Array<{}> = [];
 
@@ -55,8 +53,7 @@ export class DateFilterComponent implements OnInit {
     });
 
     _.forEach(filteredDates, (value, key) => {
-      const date = new Date(`${value.date.month}.${value.date.day}.${year}`);
-      const literal = `${weekDays[date.getDay()]} ${value.date.day} ${yearMonths[date.getMonth()]}`;
+      const literal = this.lottolandService.getLiteralFromDate(value);
       dayMonth.push({dayMonth: `${value.date.day}.${value.date.month}`, string: literal});
     });
 

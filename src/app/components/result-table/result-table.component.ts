@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LottolandServiceService } from "../../services/lottoland-service.service";
+import { LottolandServiceService } from '../../services/lottoland-service.service';
 import * as _ from 'lodash';
-import * as accounting from 'accounting';
 
 @Component({
   selector: 'app-result-table',
