@@ -9,8 +9,8 @@
     <tr *ngFor="let row of dataToDraw; let i = index">
       <td>{{romanNumbers[i+1]}}</td>
       <td>{{matches[i+1].n}} Numbers + {{matches[i+1].e}} Euronumbers</td>
-      <td>{{row.winners}}x</td>
-      <td>€{{row.prize}}</td>
+      <td>{{parseWinnersNumbers(row.winners)}}x</td>
+      <td>€{{parsePrizeNumber(row.prize)}}</td>
     </tr>
   </table>
 </div>

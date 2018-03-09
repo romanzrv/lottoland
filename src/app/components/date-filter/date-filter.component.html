@@ -4,7 +4,7 @@
     <div class="col">
       <div class="row">
         <div class="col-sm">
-          <select [(ngModel)]="selectedDayMonth" (change)="setDataToDrawByDate($event.target)" class="form-control" id="days-select">
+          <select [(ngModel)]="selectedDayMonth" (change)="setDataToDrawByDate($event.target, null)" class="form-control" id="days-select">
             <option *ngFor="let dm of dayMonth" [selected]="dm.string" [value]="dm.dayMonth">{{dm.string}}</option>
           </select>
         </div>

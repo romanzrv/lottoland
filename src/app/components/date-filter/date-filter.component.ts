@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { LottolandServiceService } from "../../services/lottoland-service.service";
 import * as _ from 'lodash';
 
@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 })
 export class DateFilterComponent implements OnInit {
   private receivedData: Array<any>;
-  private selectedDayMonth: string;
+  private selectedDayMonth: any;
   private selectedYear: string;
   private years: Array<string>;
   private dayMonth: Array<{}>;
@@ -35,6 +35,8 @@ export class DateFilterComponent implements OnInit {
 
     yearsSelected = _.uniq(_.map(filteredYears, 'year'));
     this.years = yearsSelected;
+    this.selectedYear = this.years[0];
+    this.lottolandService.setSelectedYear(this.selectedYear);
   }
 
   /**
@@ -49,7 +51,7 @@ export class DateFilterComponent implements OnInit {
     const dayMonth: Array<{}> = [];
 
     filteredDates = _.filter(data, (d) => {
-      return d.date.year.toString() === year;
+      return d.date.year.toString() === year.toString();
     });
 
     _.forEach(filteredDates, (value, key) => {
@@ -59,6 +61,7 @@ export class DateFilterComponent implements OnInit {
     });
 
     this.dayMonth = dayMonth;
+    this.selectedDayMonth = this.dayMonth[0]['dayMonth'];
   }
 
   /**
@@ -67,8 +70,8 @@ export class DateFilterComponent implements OnInit {
    * @param date - The date selected in the combo
    * @param data - received data
    */
-  public setDataToDrawByDate = (event) => {
-    let date = `${event.value}.${this.selectedYear}`;
+  public setDataToDrawByDate = (event, data) => {
+    let date = event ? `${event.value}.${this.selectedYear}` : data;
     const rowsToDraw = _.filter(this.receivedData, (d) => {return _.split(d.drawingDate, ',', 1)[0].replace(/\b0/g, '') === date});
     this.lottolandService.setRowData(rowsToDraw);
 
@@ -88,14 +91,28 @@ export class DateFilterComponent implements OnInit {
    */
   public fillDayMonthCombo = () => {
     this.getDayMonth(this.receivedData, this.selectedYear);
+    this.setDataToDrawByDate(null, `${this.selectedDayMonth}.${this.selectedYear}`);
   }
 
+  /**
+   * On first load, set the most recent date as default and load data
+   */
   ngOnInit() {
     this.lottolandService.requestAjaxData();
+
     this.lottolandService.getReceivedData().subscribe(data => {
       this.receivedData = data;
       this.fillYearCombo();
     });
+
+    this.lottolandService.getSelectedYear().subscribe(data => {
+      if (data) {
+        let selectedDate = `${this.selectedDayMonth}.${this.selectedYear}`;
+        this.fillDayMonthCombo();
+        this.setDataToDrawByDate(null, selectedDate);
+      }
+    });
+
   }
 
 }

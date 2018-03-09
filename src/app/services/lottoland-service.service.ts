@@ -9,6 +9,7 @@ export class LottolandServiceService {
 
   private receivedData = new BehaviorSubject<any>([]);
   private tableRowData = new BehaviorSubject<any>([]);
+  private selectedYearData = new BehaviorSubject<any>([]);
 
   constructor(public http: HttpClient) {
     this.url = 'https://media.lottoland.com/api/drawings/euroJackpot/1462515960';
@@ -63,6 +64,23 @@ export class LottolandServiceService {
    */
   public setRowData = (dataToSet: any) => {
     this.tableRowData.next(dataToSet);
+  }
+
+
+  /**
+   * Default selected year getter
+   * @param dataToSet
+   */
+  public setSelectedYear = (dataToSet: any) => {
+    this.selectedYearData.next(dataToSet);
+  }
+
+  /**
+   * Default selected year setter
+   * @returns {BehaviorSubject<any>}
+   */
+  public getSelectedYear = (): BehaviorSubject<any> => {
+    return this.selectedYearData;
   }
 
 }

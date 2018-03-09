@@ -24,6 +24,26 @@ export class ResultTableComponent implements OnInit {
   }
 
   /**
+   * Parse the prize amount with commas
+   * @param value
+   * @returns {string}
+   */
+  public parsePrizeNumber = (value): string => {
+    return value.toString().replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+  }
+
+  /**
+   * Parse the winners number with commas
+   * @param value
+   * @returns {string}
+   */
+  public parseWinnersNumbers = (value): string => {
+    return value.toLocaleString('en');
+  }
+
+  /**
    * Order and parse the received data
    * @param dataToParse - Received data
    */
@@ -33,6 +53,9 @@ export class ResultTableComponent implements OnInit {
     this.dataToDraw = _.filter(this.dataToDraw, (d) => {return d.prize !== 0});
   }
 
+  /**
+   * On first load, draw the table
+   */
   ngOnInit() {
     this.lottolandService.getRowData().subscribe(data => {
       if (data && data.length > 0)
