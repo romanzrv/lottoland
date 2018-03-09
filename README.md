@@ -12,9 +12,9 @@ Transpile to ES5
 npm run-script build
 ```
 Open `dist/index.html` in your browser
-```
-## Tips
 
+## Tips
+```
 If trying to load the page the data doesn't load and you get the following message in the browsers console:
 ```
 `No 'Access-Control-Allow-Origin' header is present on the requested resource`
