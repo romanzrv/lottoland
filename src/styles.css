@@ -1,2 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+  background-color: #e6e6e6;
+  background-image: -webkit-linear-gradient(30deg, #f2f2f2 50%, #e6e6e6 50%);
+  min-height: 500px;
+}

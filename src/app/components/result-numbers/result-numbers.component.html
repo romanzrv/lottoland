@@ -1,14 +1,23 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      EuroJackpot Results for Friday 02 Mar 2018
+      <span class="euroJackpotColor">EuroJackpot</span> Results for Friday 02 Mar 2018
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <div [hidden]="!numbers && !euroNumbers">
-        <span id="numbers">{{numbers[0]}} {{numbers[1]}} {{numbers[2]}} {{numbers[3]}} {{numbers[4]}}</span>
-        <span id="euroNumbers">{{euroNumbers[0]}} {{euroNumbers[1]}}</span>
+      <div [hidden]="!numbers && !euroNumbers" class="resultNumbers">
+        <span id="numbers">
+          <span class="numberCircle">{{numbers[0]}}</span>
+          <span class="numberCircle">{{numbers[1]}}</span>
+          <span class="numberCircle">{{numbers[2]}}</span>
+          <span class="numberCircle">{{numbers[3]}}</span>
+          <span class="numberCircle">{{numbers[4]}}</span>
+        </span>
+        <span id="euroNumbers">
+          <span class="euroNumberCircle">{{euroNumbers[0]}}</span>
+          <span class="euroNumberCircle">{{euroNumbers[1]}}</span>
+        </span>
       </div>
     </div>
   </div>
