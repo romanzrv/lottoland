@@ -71,9 +71,6 @@ export class DateFilterComponent implements OnInit {
     let date = event ? `${event.value}.${this.selectedYear}` : data;
     const rowsToDraw = _.filter(this.receivedData, (d) => {return _.split(d.drawingDate, ',', 1)[0].replace(/\b0/g, '') === date});
     this.lottolandService.setRowData(rowsToDraw);
-
-    console.log(date);
-    console.log(rowsToDraw);
   }
 
   /**
