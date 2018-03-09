@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class LottolandServiceService {
@@ -12,7 +12,7 @@ export class LottolandServiceService {
   private selectedYearData = new BehaviorSubject<any>([]);
 
   constructor(public http: HttpClient) {
-    this.url = 'https://media.lottoland.com/api/drawings/euroJackpot/1462515960';
+    this.url = 'https://media.lottoland.com/api/drawings/euroJackpot/1462515962';
   }
 
   /**
@@ -20,7 +20,7 @@ export class LottolandServiceService {
    * @returns {Observable<any>}
    */
   public sendAjaxRequest(): Observable<any> {
-    let receivedData = this.http.get(this.url);
+    const receivedData = this.http.get(this.url);
     return receivedData;
   }
 
@@ -29,8 +29,10 @@ export class LottolandServiceService {
    */
   public requestAjaxData = () => {
     this.sendAjaxRequest().subscribe(data => {
-      if (data)
-        this.setReceivedData(data.last)
+      if (data) {
+        this.setReceivedData(data.last);
+      }
+
     });
   }
 
@@ -44,7 +46,7 @@ export class LottolandServiceService {
 
   /**
    * Received data setter
-   * @param dataToSet
+   * @param dataToSet - Data to set
    */
   public setReceivedData = (dataToSet) => {
     this.receivedData.next(dataToSet);
@@ -60,7 +62,7 @@ export class LottolandServiceService {
 
   /**
    * Row data setter
-   * @param dataToSet
+   * @param dataToSet - Data to set
    */
   public setRowData = (dataToSet: any) => {
     this.tableRowData.next(dataToSet);
@@ -69,7 +71,7 @@ export class LottolandServiceService {
 
   /**
    * Default selected year getter
-   * @param dataToSet
+   * @param dataToSet - Data to set
    */
   public setSelectedYear = (dataToSet: any) => {
     this.selectedYearData.next(dataToSet);
@@ -85,7 +87,7 @@ export class LottolandServiceService {
 
   /**
    * This method gets a literal from date
-   * @param date
+   * @param date - date to parse
    * @returns {string}
    */
   public getLiteralFromDate = (date): string => {

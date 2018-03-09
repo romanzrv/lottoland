@@ -24,18 +24,18 @@ export class ResultTableComponent implements OnInit {
 
   /**
    * Parse the prize amount with commas
-   * @param value
+   * @param value - Value to parse
    * @returns {string}
    */
   public parsePrizeNumber = (value): string => {
-    return value.toString().replace(/\D/g, "")
+    return value.toString().replace(/\D/g, '')
       .replace(/([0-9])([0-9]{2})$/, '$1.$2')
-      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ',');
   }
 
   /**
    * Parse the winners number with commas
-   * @param value
+   * @param value - Value to parse
    * @returns {string}
    */
   public parseWinnersNumbers = (value): string => {
@@ -49,7 +49,7 @@ export class ResultTableComponent implements OnInit {
   public parseAndDrawInfo = (dataToParse) => {
     this.dataToDraw = _.values(dataToParse[0].odds);
     this.dataToDraw = _.orderBy(this.dataToDraw, ['prize'], ['desc']);
-    this.dataToDraw = _.filter(this.dataToDraw, (d) => {return d.prize !== 0});
+    this.dataToDraw = _.filter(this.dataToDraw, (d) => {return d.prize !== 0;});
   }
 
   /**
