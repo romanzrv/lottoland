@@ -8,12 +8,12 @@ import * as _ from 'lodash';
   styleUrls: ['./date-filter.component.css']
 })
 export class DateFilterComponent implements OnInit {
-  private receivedData: Array<any>;
-  private selectedDayMonth: any;
-  private selectedYear: string;
-  private years: Array<string>;
-  private dayMonth: Array<{}>;
-  private title: string;
+  public receivedData: Array<any>;
+  public selectedDayMonth: any;
+  public selectedYear: string;
+  public years: Array<string>;
+  public dayMonth: Array<{}>;
+  public title: string;
 
 
   constructor(private lottolandService: LottolandServiceService) {

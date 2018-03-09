@@ -7,8 +7,8 @@ import { LottolandServiceService } from "../../services/lottoland-service.servic
   styleUrls: ['./result-numbers.component.css']
 })
 export class ResultNumbersComponent implements OnInit {
-  private euroNumbers: Array<any> = [];
-  private numbers: Array<any> = [];
+  public euroNumbers: Array<any> = [];
+  public numbers: Array<any> = [];
 
   constructor(private lottolandService: LottolandServiceService) { }
 
