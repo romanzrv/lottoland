@@ -94,7 +94,7 @@ export class LottolandServiceService {
     const yearMonths = {0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Abr', 4: 'May', 5: 'Jun', 6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec'};
     const weekDays = {1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thu', 5: 'Fri', 6: 'Sat', 7: 'Sun'};
 
-    const dateObj = new Date(`${date.date.month}.${date.date.day}.${date.date.year}`);
+    const dateObj = new Date(`${date.date.month}/${date.date.day}/${date.date.year}`);
     const literal = `${weekDays[dateObj.getDay()]} ${date.date.day} ${yearMonths[dateObj.getMonth()]}`;
 
     return literal;
