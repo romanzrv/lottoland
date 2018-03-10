@@ -12,7 +12,7 @@ export class LottolandServiceService {
   private selectedYearData = new BehaviorSubject<any>([]);
 
   constructor(public http: HttpClient) {
-    this.url = 'https://media.lottoland.com/api/drawings/euroJackpot/1462515962';
+    this.url = 'https://media.lottoland.com/api/drawings/euroJackpot/1462515962?callback=JSONP_CALLBACK';
   }
 
   /**
@@ -20,7 +20,7 @@ export class LottolandServiceService {
    * @returns {Observable<any>}
    */
   public sendAjaxRequest(): Observable<any> {
-    const receivedData = this.http.get(this.url);
+    const receivedData = this.http.jsonp(this.url, 'callback');
     return receivedData;
   }
 

@@ -8,7 +8,7 @@ import { DateFilterComponent } from './components/date-filter/date-filter.compon
 import { ResultNumbersComponent } from './components/result-numbers/result-numbers.component';
 import { ResultTableComponent } from './components/result-table/result-table.component';
 import { LottolandServiceService } from "./services/lottoland-service.service";
-import { HttpClientModule } from "@angular/common/http";
+import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { HttpClientModule } from "@angular/common/http";
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    HttpClientJsonpModule
   ],
   providers: [LottolandServiceService],
   bootstrap: [AppComponent]
